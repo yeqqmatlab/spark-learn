@@ -15,11 +15,11 @@ object SparkStreamingDataToMysql {
     }
 
     //创建一个流工具集
-    val ssc = new StreamingContext("local[2]", "NetworkWordCount", Seconds(3))
+    val ssc = new StreamingContext("local[2]", "SparkStreamingDataToMysql", Seconds(3))
     // get DStream from socket
-    val lines = ssc.socketTextStream("", 9999)
+    val lines = ssc.socketTextStream("192.168.1.248", 9999)
     //设置检查点，检查点具有容错机制
-    ssc.checkpoint("hdfs://192.168.243:8020/input2")
+    ssc.checkpoint("hdfs://192.168.1.243:8020/test")
 
     val words: DStream[String] = lines.flatMap(_.split(" "))
     val wordAndOne: DStream[(String, Int)] = words.map(x => (x, 1))
@@ -33,12 +33,12 @@ object SparkStreamingDataToMysql {
             var conn: Connection = null
             var stmt: PreparedStatement = null
           try{
-            val url = "jdbc:mysql://hadoop01:3306/test"
-            val user = "root"
-            val password = "root"
+            val url = "jdbc:mysql://192.168.1.210:3307/test"
+            val user = "zsy"
+            val password = "lc12345"
             conn = DriverManager.getConnection(url, user, password)
             records.foreach(p => {
-              val sql = "insert into wordcount(word,count) values (?,?)"
+              val sql = "insert into word_count(word,count) values (?,?)"
               stmt = conn.prepareStatement(sql);
               stmt.setString(1, p._1.trim)
               stmt.setInt(2,p._2.toInt)

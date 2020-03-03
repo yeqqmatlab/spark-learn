@@ -1,6 +1,7 @@
 package org.scala.spark.streaming
 
 import org.apache.spark.SparkConf
+import org.apache.spark.streaming.dstream.DStream
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object UpdateStateByKeyTest {
@@ -29,7 +30,7 @@ object UpdateStateByKeyTest {
 
     val pairsDStream = linesDStream.flatMap(_.split(" ")).map(word => (word, 1))
 
-    val result = pairsDStream.updateStateByKey(updateFunc)
+    val result: DStream[(String, Int)] = pairsDStream.updateStateByKey(updateFunc)
 
     result.print()
 
