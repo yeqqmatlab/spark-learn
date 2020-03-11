@@ -14,7 +14,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <scala.version>2.12.8</scala.version>
         <spark.version>2.4.4</spark.version>
-        <hadoop.version>3.0.0</hadoop.version>
+        <hadoop.version>2.6.0</hadoop.version>
         <hbase.version>2.1.0</hbase.version>
         <encoding>UTF-8</encoding>
     </properties>
@@ -127,11 +127,11 @@
             <artifactId>elasticsearch-hadoop</artifactId>
             <version>5.2.2</version>
         </dependency>-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>22.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>

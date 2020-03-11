@@ -1,5 +1,7 @@
 package org.spark;
 
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
 public class TestSpark {
@@ -13,10 +15,9 @@ public class TestSpark {
                 //.config("","")
                 .getOrCreate();
 
+        Dataset<Row> df = sparkSession.read().parquet("hdfs://192.168.1.243:8020/zsy/warehouse/dws/exam_extend/");
 
-
-
-
+        df.show();
 
         sparkSession.stop();
     }
