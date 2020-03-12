@@ -12,7 +12,7 @@ object KryoApp {
     val conf: SparkConf = new SparkConf().setAppName("KryoApp").setMaster("local[2]")
     conf.set("spark.serializer","org.apache.spark.serializer.KryoSerializer")
     conf.set("spark.rdd.compress", "true")
-    conf.registerKryoClasses(Array(classOf[Logger]))
+    conf.registerKryoClasses(Array(classOf[Row]))
 
     val sc = new SparkContext(conf)
 
@@ -29,7 +29,6 @@ object KryoApp {
 
     //println("---->"+logRDD.count())
     println("---->"+persistRDD.count())
-
 
     Thread.sleep(90000)
     sc.stop()
