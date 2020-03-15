@@ -91,6 +91,7 @@ public class JavaSparkHiveExample {
 
     spark.sql("SELECT * FROM records r JOIN src s ON r.key = s.key").show();
 
+
     spark.stop();
   }
 }
