@@ -15,10 +15,10 @@ object KafkaDirectWordCount {
 
     val ssc = new StreamingContext(conf, Seconds(2))
 
-    val topicsSet = Array("topic_01","topic_02")
+    val topicsSet = Array("test2020")
     val kafkaParams = mutable.HashMap[String, String]()
     //必须添加以下参数，否则会报错
-    kafkaParams.put("bootstrap.servers", "192.168.1.239:9092,192.168.1.247:9092,192.168.1.248:9092")
+    kafkaParams.put("bootstrap.servers", "localhost:9092")
     kafkaParams.put("group.id", "test-group-01")
     kafkaParams.put("auto.offset.reset", "earliest")
     kafkaParams.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
