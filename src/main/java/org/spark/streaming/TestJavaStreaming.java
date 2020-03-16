@@ -12,7 +12,6 @@
 //import org.apache.spark.streaming.kafka010.KafkaUtils;
 //import org.apache.spark.streaming.kafka010.LocationStrategies;
 //import scala.Tuple2;
-//
 //import java.util.Arrays;
 //import java.util.Collection;
 //import java.util.HashMap;
@@ -26,14 +25,14 @@
 //        JavaStreamingContext jssc = new JavaStreamingContext(conf, Durations.seconds(1));
 //
 //        Map<String, Object> kafkaParams = new HashMap<>();
-//        kafkaParams.put("bootstrap.servers", "192.168.1.239:9092,192.168.1.247:9092,192.168.1.248:9092");
+//        kafkaParams.put("bootstrap.servers", "localhost:9092");
 //        kafkaParams.put("key.deserializer", StringDeserializer.class);
 //        kafkaParams.put("value.deserializer", StringDeserializer.class);
 //        kafkaParams.put("group.id", "test-group-01");
 //        kafkaParams.put("auto.offset.reset", "earliest");
 //        kafkaParams.put("enable.auto.commit", true);
 //
-//        Collection<String> topics = Arrays.asList("topic_01", "topic_02");
+//        Collection<String> topics = Arrays.asList("test2020");
 //
 //        JavaInputDStream<ConsumerRecord<String, String>> stream =
 //                KafkaUtils.createDirectStream(
@@ -46,7 +45,7 @@
 //
 //        JavaDStream<String> map = javaPairDStream.map(x -> x._2);
 //
-//        map.dstream().saveAsTextFiles("hdfs://ip243:8020/kafka_test/","csv");
+//        map.dstream().saveAsTextFiles("/Users/yqq/logs/","csv");
 //
 //
 //        jssc.start();              // Start the computation
