@@ -12,7 +12,7 @@ object NetworkWordCount {
     //StreamingExamples.setStreamingLogLevels()
     val sparkConf = new SparkConf().setAppName("NetworkWordCount").setMaster("local[2]")
 
-    val ssc = new StreamingContext(sparkConf, Seconds(3))
+    val ssc = new StreamingContext(sparkConf, Seconds(1))
 
     val lines = ssc.socketTextStream("192.168.1.248", 9999, StorageLevel.MEMORY_AND_DISK_SER)
     val words: DStream[String] = lines.flatMap(_.split(" "))
