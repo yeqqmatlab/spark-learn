@@ -6,6 +6,10 @@ import org.apache.spark.ml.feature.{HashingTF, Tokenizer}
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.ml.linalg.Vector
 
+/**
+ * pipeline管线测试
+ * 模型保存和加载
+ */
 object PipelineExample {
   def main(args: Array[String]): Unit = {
 
@@ -18,9 +22,9 @@ object PipelineExample {
     import spark.implicits._
 
     val training = spark.createDataFrame(Seq(
-      (0L, "a b c d e spark python", 1.0),
+      (0L, "a b c d e  python", 1.0),
       (1L, "spark hadoop java", 0.0),
-      (2L, "python f g h java", 1.0),
+      (2L, "python f g h ", 1.0),
       (3L, "apache hadoop mapreduce kafka hbase flink", 0.0)
     )).toDF("id", "text", "label")
 
@@ -46,7 +50,7 @@ object PipelineExample {
 
     //test data
     val test = spark.createDataFrame(Seq(
-      (4L, "spark i j k"),
+      (4L, "python a b c aa"),
       (5L, "l m n"),
       (6L, "spark hadoop spark"),
       (7L, "apache hadoop")
@@ -60,8 +64,7 @@ object PipelineExample {
           println(s"($id,$text)--->prob=$prob,prediction=$prediction")
         }
 
-
-    Thread.sleep(30000)
+    //Thread.sleep(30000)
     spark.stop()
   }
 }

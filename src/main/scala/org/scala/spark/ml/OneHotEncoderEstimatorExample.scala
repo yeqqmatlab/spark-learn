@@ -21,6 +21,7 @@ object OneHotEncoderEstimatorExample {
       .setOutputCols(Array("categoryVec1", "categoryVec2")).setDropLast(false)
     val model = encoder.fit(df)
 
+    
     val encoded = model.transform(df)
     encoded.show()
 
