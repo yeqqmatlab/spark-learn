@@ -1,8 +1,10 @@
 package org.scala.spark.streaming
 
+import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, LocationStrategies}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+
 import scala.collection.mutable
 
 object KafkaDirectWordCount {
@@ -15,7 +17,9 @@ object KafkaDirectWordCount {
 
     val ssc = new StreamingContext(conf, Seconds(3))
 
-    val topicsSet = Array("payTopic")
+    Logger.getRootLogger.setLevel(Level.WARN)
+
+    val topicsSet = Array("topic_03")
     val kafkaParams = mutable.HashMap[String, String]()
     //必须添加以下参数，否则会报错
     kafkaParams.put("bootstrap.servers", "ip239:9092,ip247:9092,ip248:9092")
