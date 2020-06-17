@@ -18,30 +18,36 @@ import java.nio.charset.Charset;
 public class GetExample {
 
     public static void main(String[] args) throws IOException {
+
+
         //get conn
         Connection connection = HBaseConnectionFactory.getConnection();
         if (connection == null){
             new Throwable("no getConnection!!!");
         }
         //get table
-        Table table = connection.getTable(TableName.valueOf("person"));
-        byte[] rowkey = Bytes.toBytes("1");
+        Table table = connection.getTable(TableName.valueOf("student_method_rate"));
+        byte[] rowkey = Bytes.toBytes("1452_17536408539789254473_17535877358481719982_691");
         byte[] f1 = Bytes.toBytes("info");
-        byte[] name = Bytes.toBytes("name");
+        byte[] rate = Bytes.toBytes("rate");
+
+        long start = System.currentTimeMillis();
 
         Get get1 = new Get(rowkey);
 
-        get1.addColumn(f1, name);
+        get1.addColumn(f1, rate);
         boolean exists = table.exists(get1);
         System.out.println(exists);
         Result result = table.get(get1);
-        byte[] value = result.getValue(f1, name);
+        byte[] value = result.getValue(f1, rate);
 
         /*for (byte b : value) {
             System.out.println("-->"+b);
         }*/
 
         System.out.println("value--->"+Bytes.toString(value));
+
+        System.out.println((System.currentTimeMillis() - start)/1000);
 
         table.close();
         connection.close();
