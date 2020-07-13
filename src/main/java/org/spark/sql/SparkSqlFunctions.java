@@ -4,6 +4,8 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
+import java.sql.Struct;
+
 /**
  * spark-sql 内置函数 demo
  * created by yqq 2020/7/2
@@ -54,10 +56,8 @@ public class SparkSqlFunctions {
         //spark.sql("SELECT bit_or(col) FROM VALUES (3), (5) AS tab(col)").show();
 
 
-
-
-
         spark.sql("SELECT school_id,count_if(status == 1) FROM score group by school_id").show();
+
 
 
         spark.stop();
