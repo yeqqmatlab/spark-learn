@@ -14,7 +14,7 @@ object UpdateStateByKeyTest {
 
     //定义状态更新函数
     val updateFunc = (values: Seq[Int], state: Option[Int]) => {
-      val currentCount  = values.foldLeft(0)(_ + _)
+      val currentCount  = values.sum
       val previousCount  = state.getOrElse(0)
       Some(currentCount + previousCount)
     }
