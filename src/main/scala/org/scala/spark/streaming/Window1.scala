@@ -68,7 +68,6 @@ object Window1 {
      */
     //val count: DStream[Long] = dataDS30.count()
 
-
     val sumDS: DStream[BigDecimal] = dataDS30.map(vo => vo.fee).reduce(_ + _)
     sumDS.print()
 
