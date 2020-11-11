@@ -53,32 +53,48 @@ public class FPGrowthMethods {
                 .setMinConfidence(0.7)
                 .fit(itemsDF);
 
-        // Display frequent itemsets.
-//        model.freqItemsets().printSchema();
-//        System.out.println("freqItemsets--->");
-        model.freqItemsets().show();
+        /**
+         * Display frequent itemsets.
+         */
+
+        //model.freqItemsets().printSchema();
+        //System.out.println("freqItemsets--->");
+        //model.freqItemsets().show();
+        System.out.println("-----频繁数据集-----");
+        System.out.println("-----考点ids, 出现的频次-----");
+        int methodSum = 0;
         for (Row row : model.freqItemsets().toJavaRDD().collect()) {
             List<String> list = row.getList(0);
+            if (list.size() > 1) {
+                methodSum++;
+            }
             long count = row.getLong(1);
             System.out.println(list.toString()+"--->"+count);
         }
+        System.out.println("methodSum---->"+methodSum);
 
-        // Display generated association rules.
-        model.associationRules().printSchema();
-        System.out.println("associationRules--->");
-        model.associationRules().show();
+        /**
+         * Display generated association rules.
+         */
+        //model.associationRules().printSchema();
+        //System.out.println("associationRules--->");
+        //model.associationRules().show();
 
+        System.out.println("-----有较强关联关系的考点-----------");
+        System.out.println("-----a考点集，b考点，在考题topic中a出现后b出现的概率-----------");
         for (Row row : model.associationRules().toJavaRDD().collect()) {
             List<String> antecedentList = row.getList(0);
             List<String> consequentList = row.getList(1);
             double confidence = row.getDouble(2);
-            System.out.println(antecedentList.toString()+"===>"+consequentList.toString()+","+confidence);
+            System.out.println(antecedentList.toString()+"===>"+consequentList.toString()+", "+confidence);
         }
 
+        System.out.println("associationRules.size--->"+model.associationRules().toJavaRDD().collect().size());
 
-
-        // transform examines the input items against all the association rules and summarize the
-        // consequents as prediction
+        /**
+         * transform examines the input items against all the association rules and summarize the
+         * consequents as prediction
+         */
         //model.transform(itemsDF).show();
 
         spark.stop();
