@@ -12,7 +12,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.version>2.11.0</scala.version>
+        <scala.version>2.12.0</scala.version>
         <spark.version>2.4.0</spark.version>
         <hadoop.version>2.6.0</hadoop.version>
         <hbase.version>2.1.0</hbase.version>
@@ -25,7 +25,13 @@
             <id>cloudera</id>
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
         </repository>
+        <!-- list of other repositories -->
+        <repository>
+            <id>SparkPackagesRepo</id>
+            <url>http://dl.bintray.com/spark-packages/maven</url>
+        </repository>
     </repositories>
+
 
     <dependencies>
         <dependency>
@@ -35,22 +41,22 @@
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.11</artifactId>
+            <artifactId>spark-core_2.12</artifactId>
             <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.11</artifactId>
+            <artifactId>spark-sql_2.12</artifactId>
             <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-mllib_2.11</artifactId>
+            <artifactId>spark-mllib_2.12</artifactId>
             <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql-kafka-0-10_2.11</artifactId>
+            <artifactId>spark-sql-kafka-0-10_2.12</artifactId>
             <version>${spark.version}</version>
         </dependency>
 
@@ -122,12 +128,12 @@
             <artifactId>spark-hive_2.12</artifactId>
             <version>${spark.version}</version>
         </dependency>-->
-        <dependency>
+        <!--<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
         <!--<dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch-spark-20_2.11</artifactId>
@@ -212,7 +218,17 @@
             <version>2.4.0</version>
         </dependency>
 
+        <!-- list of dependencies -->
+        <dependency>
+            <groupId>neo4j-contrib</groupId>
+            <artifactId>neo4j-connector-apache-spark_2.12</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+
+
     </dependencies>
+
 
 
     <build>
