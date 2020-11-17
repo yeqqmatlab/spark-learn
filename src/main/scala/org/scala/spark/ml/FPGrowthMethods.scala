@@ -1,14 +1,16 @@
 package org.scala.spark.ml
 
 import java.util.Properties
-
 import org.apache.spark.ml.fpm.FPGrowth
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.functions.{col, explode}
 import org.apache.spark.sql.types.{LongType, StructField, StructType}
 import org.apache.spark.sql._
 
-
+/**
+ * yqq 2020/11/17
+ * 考点关联分析
+ */
 object FPGrowthMethods {
 
   def main(args: Array[String]): Unit = {
@@ -57,7 +59,6 @@ object FPGrowthMethods {
 
     /**********************************************************insert to mysql*********************************************************************************/
 
-
     val methodDF = spark.read
       .format("jdbc")
       .option("url", "jdbc:mysql://192.168.1.210:3307/data_mining?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&rewriteBatchedStatements=true")
@@ -82,12 +83,6 @@ object FPGrowthMethods {
       .option("truncate","true")
       .jdbc(url, "association_method", connectionProperties)
 
-
-
-
-
-
-
     /**
      * 考点在题库出现的频次统计
      */
@@ -110,13 +105,6 @@ object FPGrowthMethods {
       .mode(SaveMode.Overwrite)
       .option("truncate","true")
       .jdbc(url, "association_rules", connectionProperties)
-
-    /**********************************************************insert to neo4j*********************************************************************************/
-
-
-
-
-
 
     spark.stop()
   }

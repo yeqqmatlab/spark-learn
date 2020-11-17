@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
+/**
+ * yqq 2020/11/17
+ * 关联考点处理
+ */
 public class MethodJsonSpark {
     public static void main(String[] args) {
 
@@ -108,8 +112,6 @@ public class MethodJsonSpark {
                 .mode(SaveMode.Overwrite)
                 .option("truncate","true")
                 .jdbc(url, "association_method_json", connectionProperties);
-
-
 
         spark.stop();
     }
