@@ -225,6 +225,36 @@
             <version>4.0.0</version>
         </dependency>
 
+        <!-- 中文分詞器内置数据包的Portable 最新版 -->
+        <!-- http://mvnrepository.com/artifact/com.hankcs/hanlp -->
+        <dependency>
+            <groupId>com.hankcs</groupId>
+            <artifactId>hanlp</artifactId>
+            <version>portable-1.7.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jpmml/pmml-evaluator -->
+        <dependency>
+            <groupId>org.jpmml</groupId>
+            <artifactId>pmml-evaluator</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jpmml/pmml-evaluator-extension -->
+        <dependency>
+            <groupId>org.jpmml</groupId>
+            <artifactId>pmml-evaluator-extension</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+
+        <!--简单-->
+        <!-- https://mvnrepository.com/artifact/org.pmml4s/pmml4s -->
+        <dependency>
+            <groupId>org.pmml4s</groupId>
+            <artifactId>pmml4s_2.12</artifactId>
+            <version>0.9.7</version>
+        </dependency>
+
+
 
 
     </dependencies>
