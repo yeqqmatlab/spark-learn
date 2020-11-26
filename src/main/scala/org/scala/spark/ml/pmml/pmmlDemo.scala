@@ -55,10 +55,6 @@ object pmmlDemo {
     //    val sameModel = LogisticRegressionModel.load(spark.sparkContext,"target/tmp/scalaLogisticRegressionWithLBFGSModel")
 
     //model.toPMML(spark.sparkContext, "G:\\pmml\\spark\\lr\\lr.xml")
-    model.save(spark.sparkContext,"G:\\pmml\\spark\\lr\\model")
-
-
-
 
     spark.stop()
 
