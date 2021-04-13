@@ -15,7 +15,7 @@ object ReadFromNeo4j {
       .option("url", "bolt://localhost:7687")
       .option("authentication.basic.username", "neo4j")
       .option("authentication.basic.password", "1qaz2wsx")
-      .option("labels", "Method")
+      .option("labels", "Movie")
       .load()
 
     dataFrame.show()

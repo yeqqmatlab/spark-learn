@@ -113,13 +113,13 @@
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+            <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
             <version>2.4.4</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming_2.11</artifactId>
+            <artifactId>spark-streaming_2.12</artifactId>
             <version>2.4.4</version>
             <!--<scope>provided</scope>-->
         </dependency>
@@ -214,7 +214,7 @@
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-graphx_2.11</artifactId>
+            <artifactId>spark-graphx_2.12</artifactId>
             <version>2.4.0</version>
         </dependency>
 
