@@ -1,1 +1,23 @@
 # Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+output
+namesAndAges.parquet
+spark-warehouse
+target
+dependency-reduced-pom.xml
+.gitignore
