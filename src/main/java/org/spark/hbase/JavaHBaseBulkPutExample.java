@@ -22,17 +22,19 @@ public class JavaHBaseBulkPutExample {
     public static void main(String args[]) {
 
         SparkConf sc = new SparkConf();
-        sc.setAppName("JavaHBaseBulkPutExample").setMaster("local[2]");
+        sc.setAppName("JavaHBaseBulkPutExample").setMaster("local[8]");
         sc.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
 
         JavaSparkContext jsc = new JavaSparkContext(sc);
 
         List<String> list = new ArrayList<>();
-        list.add("4," + "info" + ",name,tom4");
-        list.add("4," + "info" + ",age,2");
-        list.add("5," + "info" + ",name,tom5");
-        list.add("5," + "info" + ",age,4");
-        list.add("6," + "info" + ",name,tom6");
+
+
+        for (int i = 0; i < 3000000; i++) {
+            list.add("python_"+i+",demo"+",content,tom"+i);
+            list.add("python_"+i+",demo"+",avg,avg"+i );
+        }
+
 
         JavaRDD<String> rdd = jsc.parallelize(list);
 
@@ -41,7 +43,7 @@ public class JavaHBaseBulkPutExample {
 
         JavaHBaseContext hbaseContext = new JavaHBaseContext(jsc, hconf);
 
-        hbaseContext.bulkPut(rdd, TableName.valueOf("person"), new PutFunction());
+        hbaseContext.bulkPut(rdd, TableName.valueOf("t_demo"), new PutFunction());
 
 
 
