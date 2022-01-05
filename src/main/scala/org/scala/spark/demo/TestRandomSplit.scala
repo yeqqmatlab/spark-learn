@@ -25,7 +25,7 @@ object TestRandomSplit {
     array(1).foreach( x => println(x))
 
 
-
+    
 
     spark.stop()
   }

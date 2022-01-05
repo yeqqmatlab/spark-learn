@@ -145,7 +145,9 @@ public class JavaSQLDataSourceExample {
         // $example on:manual_load_options$
         Dataset<Row> peopleDF =
                 spark.read().format("json").load("src/main/resources/people.json");
-        peopleDF.select("name", "age").write().format("parquet").save("namesAndAges.parquet");
+        peopleDF.repartition(1).select("name", "age").write().format("parquet").save("1namesAndAges.parquet");
+
+
         // $example off:manual_load_options$
         // $example on:manual_load_options_csv$
 
@@ -167,7 +169,7 @@ public class JavaSQLDataSourceExample {
 //                spark.sql("SELECT * FROM parquet.`src/main/resources/users.parquet`");
         // $example off:direct_sql$
         // $example on:write_sorting_and_bucketing$
-        peopleDF.write().bucketBy(42, "name").sortBy("age").saveAsTable("people_bucketed");
+        //peopleDF.write().bucketBy(42, "name").sortBy("age").saveAsTable("people_bucketed");
         // $example off:write_sorting_and_bucketing$
         // $example on:write_partitioning$
 //        usersDF
