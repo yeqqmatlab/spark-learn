@@ -26,20 +26,20 @@ public class GetExample {
             new Throwable("no getConnection!!!");
         }
         //get table
-        Table table = connection.getTable(TableName.valueOf("student_method_rate"));
-        byte[] rowkey = Bytes.toBytes("1452_17536408539789254473_17535877358481719982_691");
+        Table table = connection.getTable(TableName.valueOf("person"));
+        byte[] rowkey = Bytes.toBytes("1");
         byte[] f1 = Bytes.toBytes("info");
-        byte[] rate = Bytes.toBytes("rate");
+        byte[] name = Bytes.toBytes("name");
 
         long start = System.currentTimeMillis();
 
         Get get1 = new Get(rowkey);
 
-        get1.addColumn(f1, rate);
+        get1.addColumn(f1, name);
         boolean exists = table.exists(get1);
         System.out.println(exists);
         Result result = table.get(get1);
-        byte[] value = result.getValue(f1, rate);
+        byte[] value = result.getValue(f1, name);
 
         /*for (byte b : value) {
             System.out.println("-->"+b);

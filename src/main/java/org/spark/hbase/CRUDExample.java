@@ -28,6 +28,7 @@ public class CRUDExample {
 
         Scan scan = new Scan();
         ResultScanner scanner = table.getScanner(scan);
+
         for (Result result2 : scanner) {
             while (result2.advance())
                 System.out.println("Cell: " + result2.current());
